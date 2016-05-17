@@ -35,10 +35,14 @@ NSString * publicCert = @"MIIDXjCCAsegAwIBAgIJANwHAsSs1xG2MA0GCSqGSIb3DQEBBQUAMH
     NSData *certData = [NBVerifier base64Decode:publicCert];
     
     // correct signature
-    XCTAssertTrue([NBVerifier verifyData:testBlob publicCert:certData signature:[NBVerifier base64Decode:@"bpUApzX+QH9yn5r7lV2qkorjlJ26b/ZfP8RSHJy2Rqs/WqelnIfNrxE3ireLmDmginDMbnznRrX+6fJAMgCACrbt7TldzeCE809VFQVdpXE821QIrEFdZjIjXj6F3oXE03WOujDj699fp8oeA7X0EaULAjeoBv2VO0ZB5Uc1gaM="]]);
+    NSData *sig = [NBVerifier base64Decode:@"bpUApzX+QH9yn5r7lV2qkorjlJ26b/ZfP8RSHJy2Rqs/WqelnIfNrxE3ireLmDmginDMbnznRrX+6fJAMgCACrbt7TldzeCE809VFQVdpXE821QIrEFdZjIjXj6F3oXE03WOujDj699fp8oeA7X0EaULAjeoBv2VO0ZB5Uc1gaM="];
+    XCTAssertNotNil(sig);
+    XCTAssertTrue([NBVerifier verifyData:testBlob publicCert:certData signature:(NSData * _Nonnull)sig]);
     
     // incorrect signature
-    XCTAssertFalse([NBVerifier verifyData:testBlob publicCert:certData signature:[NBVerifier base64Decode:@"merESPJK5MspZY3NRMQMRwnJaDxx0Txk6Io+KDA3Bw1wz5i+LrS1ybAQAHT/RWWa6XUsWIcIeqxNJZvykoiWKly6WRr8dVmlWMLYZJLxzXEuLsUR3FgPYp9im+ei5YR3hZi8rtqYjrzthlbQxHH9mpgaVfuDYjR2szZIGrIa/04="]]);
+    sig = [NBVerifier base64Decode:@"merESPJK5MspZY3NRMQMRwnJaDxx0Txk6Io+KDA3Bw1wz5i+LrS1ybAQAHT/RWWa6XUsWIcIeqxNJZvykoiWKly6WRr8dVmlWMLYZJLxzXEuLsUR3FgPYp9im+ei5YR3hZi8rtqYjrzthlbQxHH9mpgaVfuDYjR2szZIGrIa/04="];
+    XCTAssertNotNil(sig);
+    XCTAssertFalse([NBVerifier verifyData:testBlob publicCert:certData signature:(NSData * _Nonnull)sig]);
 }
 
 @end
