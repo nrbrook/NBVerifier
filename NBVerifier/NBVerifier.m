@@ -16,28 +16,25 @@
 @implementation NBVerifier
 
 + (BOOL)verifyData:(nonnull NSData *)data publicCert:(nonnull NSData *)publicCert signature:(nonnull NSData *)signature {
-    static SecKeyRef keyRef;
     if(!data || !signature) return NO;
-    if(!keyRef) {
-        CFDataRef certData = CFBridgingRetain(publicCert);
-        SecCertificateRef publicCertificate = SecCertificateCreateWithData(CFAllocatorGetDefault(), certData);
-        NSAssert(publicCertificate != NULL, @"Invalid public certificate");
-        CFRelease(certData);
-        
-        SecPolicyRef policy = SecPolicyCreateBasicX509();
-        SecTrustRef trustRef;
-        OSStatus trustResult = SecTrustCreateWithCertificates(publicCertificate, policy, &trustRef);
-        NSAssert1(trustResult == errSecSuccess, @"Bad trust result: %d", (int)trustResult);
-        SecTrustResultType trustEvalResult;
-        trustResult = SecTrustEvaluate(trustRef, &trustEvalResult);
-        NSAssert1(trustResult == errSecSuccess, @"Bad trust eval result: %d", (int)trustResult);
-        // trustEvalResult will not be Proceed, but this is ok, it's just because the cert is not in the keychain.  The application can just ignore this and continue using the untrusted certificate.
-        keyRef = SecTrustCopyPublicKey(trustRef);
-        NSAssert(keyRef != NULL, @"Could not copy public key");
-        CFRelease(policy);
-        CFRelease(trustRef);
-        CFRelease(publicCertificate);
-    }
+    CFDataRef certData = CFBridgingRetain(publicCert);
+    SecCertificateRef publicCertificate = SecCertificateCreateWithData(CFAllocatorGetDefault(), certData);
+    NSAssert(publicCertificate != NULL, @"Invalid public certificate");
+    CFRelease(certData);
+    
+    SecPolicyRef policy = SecPolicyCreateBasicX509();
+    SecTrustRef trustRef;
+    OSStatus trustResult = SecTrustCreateWithCertificates(publicCertificate, policy, &trustRef);
+    NSAssert1(trustResult == errSecSuccess, @"Bad trust result: %d", (int)trustResult);
+    SecTrustResultType trustEvalResult;
+    trustResult = SecTrustEvaluate(trustRef, &trustEvalResult);
+    NSAssert1(trustResult == errSecSuccess, @"Bad trust eval result: %d", (int)trustResult);
+    // trustEvalResult will not be Proceed, but this is ok, it's just because the cert is not in the keychain.  The application can just ignore this and continue using the untrusted certificate.
+    SecKeyRef keyRef = SecTrustCopyPublicKey(trustRef);
+    NSAssert(keyRef != NULL, @"Could not copy public key");
+    CFRelease(policy);
+    CFRelease(trustRef);
+    CFRelease(publicCertificate);
     
     BOOL status;
     
@@ -100,10 +97,13 @@
         CFRelease(transform);
     }
 #endif
+    if(keyRef != NULL) {
+        CFRelease(keyRef);
+    }
     return status;
 }
 
-+ (nonnull NSData *)base64Decode:(nonnull NSString *)base64String {
++ (nullable NSData *)base64Decode:(nonnull NSString *)base64String {
     if([NSData instancesRespondToSelector:@selector(initWithBase64EncodedString:options:)]) {
         return [[NSData alloc] initWithBase64EncodedString:base64String options:kNilOptions];
     } else {
