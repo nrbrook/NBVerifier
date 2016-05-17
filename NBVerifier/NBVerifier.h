@@ -11,6 +11,6 @@
 
 + (BOOL)verifyData:(nonnull NSData *)data publicCert:(nonnull NSData *)publicCert signature:(nonnull NSData *)signature;
 
-+ (nonnull NSData *)base64Decode:(nonnull NSString *)base64String;
++ (nullable NSData *)base64Decode:(nonnull NSString *)base64String;
 
 @end
