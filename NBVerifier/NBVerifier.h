@@ -2,7 +2,7 @@
 //  NBVerifier.h
 //
 //  Created by Nick Brook on 13/05/2016.
-//  Copyright (c) 2016 Nick Brook. All rights reserved.
+//  Copyright (c) 2017 Nick Brook. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

@@ -1,9 +1,8 @@
 //
-//  ATDSAVerifier.m
-//  ATShared
+//  NBVerifier.m
 //
 //  Created by Nick Brook on 16/03/2014.
-//  Copyright (c) 2014 AirTurn. All rights reserved.
+//  Copyright (c) 2017 Nick Brook. All rights reserved.
 //
 
 #import "NBVerifier.h"
