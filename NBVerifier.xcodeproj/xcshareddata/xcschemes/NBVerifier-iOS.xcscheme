@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "01BE8B8D1E6DD12500A320FA"
-               BuildableName = "libNBVerifier-iOS.a"
+               BuildableName = "libNBVerifier.a"
                BlueprintName = "NBVerifier-iOS"
                ReferencedContainer = "container:NBVerifier.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "01BE8B8D1E6DD12500A320FA"
-            BuildableName = "libNBVerifier-iOS.a"
+            BuildableName = "libNBVerifier.a"
             BlueprintName = "NBVerifier-iOS"
             ReferencedContainer = "container:NBVerifier.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "01BE8B8D1E6DD12500A320FA"
-            BuildableName = "libNBVerifier-iOS.a"
+            BuildableName = "libNBVerifier.a"
             BlueprintName = "NBVerifier-iOS"
             ReferencedContainer = "container:NBVerifier.xcodeproj">
          </BuildableReference>

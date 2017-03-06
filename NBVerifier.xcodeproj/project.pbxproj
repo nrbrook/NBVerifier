@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		01BE8BA41E6DD18000A320FA /* NBVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C25D311CE631BA0059BA00 /* NBVerifier.m */; };
 		01BE8BA51E6DD18300A320FA /* NBVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C25D311CE631BA0059BA00 /* NBVerifier.m */; };
+		01BE8D6D1E6E093C00A320FA /* module.modulemap in CopyFiles */ = {isa = PBXBuildFile; fileRef = 01BE8D6C1E6E091E00A320FA /* module.modulemap */; };
+		01BE8D6E1E6E093F00A320FA /* NBVerifier.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 01C25D301CE631BA0059BA00 /* NBVerifier.h */; };
+		01BE8D701E6E095100A320FA /* module.modulemap in CopyFiles */ = {isa = PBXBuildFile; fileRef = 01BE8D6C1E6E091E00A320FA /* module.modulemap */; };
+		01BE8D711E6E095300A320FA /* NBVerifier.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 01C25D301CE631BA0059BA00 /* NBVerifier.h */; };
 		01C25D4B1CE6323D0059BA00 /* NBVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C25D311CE631BA0059BA00 /* NBVerifier.m */; };
 		01C25D4C1CE632410059BA00 /* NBVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C25D311CE631BA0059BA00 /* NBVerifier.m */; };
 		01C25D4F1CE637520059BA00 /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C25D4E1CE637520059BA00 /* Test.m */; };
@@ -50,6 +54,19 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				01BE8D6D1E6E093C00A320FA /* module.modulemap in CopyFiles */,
+				01BE8D6E1E6E093F00A320FA /* NBVerifier.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01BE8D6F1E6E094900A320FA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				01BE8D701E6E095100A320FA /* module.modulemap in CopyFiles */,
+				01BE8D711E6E095300A320FA /* NBVerifier.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,8 +82,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		01BE8B8E1E6DD12500A320FA /* libNBVerifier-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libNBVerifier-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		01BE8B8E1E6DD12500A320FA /* libNBVerifier.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNBVerifier.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		01BE8B9B1E6DD15400A320FA /* libNBVerifier.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNBVerifier.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		01BE8D6C1E6E091E00A320FA /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = libNBVerifier/module.modulemap; sourceTree = "<group>"; };
 		01C25D301CE631BA0059BA00 /* NBVerifier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NBVerifier.h; path = NBVerifier/NBVerifier.h; sourceTree = "<group>"; };
 		01C25D311CE631BA0059BA00 /* NBVerifier.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = NBVerifier.m; path = NBVerifier/NBVerifier.m; sourceTree = "<group>"; };
 		01C25D361CE631D20059BA00 /* MacTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,6 +156,7 @@
 		01C25D291CE6317E0059BA00 = {
 			isa = PBXGroup;
 			children = (
+				01BE8D6C1E6E091E00A320FA /* module.modulemap */,
 				01C25D301CE631BA0059BA00 /* NBVerifier.h */,
 				01C25D311CE631BA0059BA00 /* NBVerifier.m */,
 				01C25D4E1CE637520059BA00 /* Test.m */,
@@ -157,7 +176,7 @@
 				01C25D431CE631E50059BA00 /* iOSTest.xctest */,
 				01C25D551CE63B280059BA00 /* MacTarget */,
 				01C25D601CE63B3D0059BA00 /* iOSTarget.app */,
-				01BE8B8E1E6DD12500A320FA /* libNBVerifier-iOS.a */,
+				01BE8B8E1E6DD12500A320FA /* libNBVerifier.a */,
 				01BE8B9B1E6DD15400A320FA /* libNBVerifier.a */,
 			);
 			name = Products;
@@ -238,7 +257,7 @@
 			);
 			name = "NBVerifier-iOS";
 			productName = libNBVerifier;
-			productReference = 01BE8B8E1E6DD12500A320FA /* libNBVerifier-iOS.a */;
+			productReference = 01BE8B8E1E6DD12500A320FA /* libNBVerifier.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		01BE8B9A1E6DD15400A320FA /* NBVerifier */ = {
@@ -248,6 +267,7 @@
 				01BE8B971E6DD15400A320FA /* Sources */,
 				01BE8B981E6DD15400A320FA /* Frameworks */,
 				01BE8B991E6DD15400A320FA /* Headers */,
+				01BE8D6F1E6E094900A320FA /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -526,6 +546,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = S3CGX2BLJA;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -543,11 +564,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MODULEMAP_FILE = libNBVerifier/module.modulemap;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = NBVerifier;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
@@ -577,6 +599,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = S3CGX2BLJA;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -588,10 +611,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MODULEMAP_FILE = libNBVerifier/module.modulemap;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = NBVerifier;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				VALIDATE_PRODUCT = YES;
@@ -622,6 +646,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = S3CGX2BLJA;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -640,7 +665,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = libNBVerifier/module.modulemap;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -672,6 +698,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = S3CGX2BLJA;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -684,7 +711,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = libNBVerifier/module.modulemap;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;

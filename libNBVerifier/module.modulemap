@@ -1,0 +1,4 @@
+module NBVerifier {
+    umbrella header "NBVerifier.h"
+    export *
+}
