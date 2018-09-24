@@ -247,9 +247,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 01BE8B961E6DD12500A320FA /* Build configuration list for PBXNativeTarget "NBVerifier-iOS" */;
 			buildPhases = (
+				01BE8B8C1E6DD12500A320FA /* CopyFiles */,
 				01BE8B8A1E6DD12500A320FA /* Sources */,
 				01BE8B8B1E6DD12500A320FA /* Frameworks */,
-				01BE8B8C1E6DD12500A320FA /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -264,10 +264,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 01BE8BA11E6DD15400A320FA /* Build configuration list for PBXNativeTarget "NBVerifier" */;
 			buildPhases = (
+				01BE8D6F1E6E094900A320FA /* CopyFiles */,
 				01BE8B971E6DD15400A320FA /* Sources */,
 				01BE8B981E6DD15400A320FA /* Frameworks */,
 				01BE8B991E6DD15400A320FA /* Headers */,
-				01BE8D6F1E6E094900A320FA /* CopyFiles */,
 			);
 			buildRules = (
 			);
