@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "01C25D421CE631E50059BA00"
+               BuildableName = "iOSTest.xctest"
+               BlueprintName = "iOSTest"
+               ReferencedContainer = "container:NBVerifier.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "01BE8B8D1E6DD12500A320FA"
+            BuildableName = "libNBVerifier.a"
+            BlueprintName = "NBVerifier-iOS"
+            ReferencedContainer = "container:NBVerifier.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
