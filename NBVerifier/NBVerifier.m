@@ -25,9 +25,20 @@
     SecTrustRef trustRef;
     OSStatus trustResult = SecTrustCreateWithCertificates(publicCertificate, policy, &trustRef);
     NSAssert1(trustResult == errSecSuccess, @"Bad trust result: %d", (int)trustResult);
-    SecTrustResultType trustEvalResult;
-    trustResult = SecTrustEvaluate(trustRef, &trustEvalResult);
-    NSAssert1(trustResult == errSecSuccess, @"Bad trust eval result: %d", (int)trustResult);
+    
+    if (@available(macOS 10.14, iOS 12.0, *)) {
+        CFErrorRef errRef;
+        bool res = SecTrustEvaluateWithError(trustRef, &errRef);
+        NSAssert1(res, @"Bad trust eval result: %@", errRef);
+    } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        SecTrustResultType trustEvalResult;
+        trustResult = SecTrustEvaluate(trustRef, &trustEvalResult);
+        NSAssert1(trustResult == errSecSuccess, @"Bad trust eval result: %d", (int)trustResult);
+#pragma clang diagnostic pop
+    }
+    
     // trustEvalResult will not be Proceed, but this is ok, it's just because the cert is not in the keychain.  The application can just ignore this and continue using the untrusted certificate.
     SecKeyRef keyRef = SecTrustCopyPublicKey(trustRef);
     NSAssert(keyRef != NULL, @"Could not copy public key");
