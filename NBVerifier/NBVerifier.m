@@ -14,7 +14,7 @@
 
 @implementation NBVerifier
 
-+ (BOOL)verifyData:(nonnull NSData *)data publicCert:(nonnull NSData *)publicCert signature:(nonnull NSData *)signature {
++ (BOOL)verifyData:(nonnull NSData *)data publicCert:(nonnull NSData *)publicCert signature:(nonnull NSData *)signature selfSigned:(BOOL)selfSigned ignoreExpired:(BOOL)ignoreExpired {
     if(!data || !signature) return NO;
     CFDataRef certData = CFBridgingRetain(publicCert);
     SecCertificateRef publicCertificate = SecCertificateCreateWithData(CFAllocatorGetDefault(), certData);
@@ -27,9 +27,14 @@
     NSAssert1(trustResult == errSecSuccess, @"Bad trust result: %d", (int)trustResult);
     
     if (@available(macOS 10.14, iOS 12.0, *)) {
+        if(selfSigned) {
+            // self signed certificate, trust root
+            NSArray *anchors = @[ (__bridge id) publicCertificate ];
+            SecTrustSetAnchorCertificates(trustRef, (__bridge CFTypeRef)anchors);
+        }
         CFErrorRef errRef;
         bool res = SecTrustEvaluateWithError(trustRef, &errRef);
-        NSAssert1(res, @"Bad trust eval result: %@", errRef);
+        NSAssert1(res || (ignoreExpired && CFErrorGetCode(errRef) == errSecCertificateExpired), @"Bad trust eval result: %@", errRef);
     } else {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"

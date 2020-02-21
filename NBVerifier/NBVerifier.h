@@ -9,7 +9,7 @@
 
 @interface NBVerifier : NSObject
 
-+ (BOOL)verifyData:(nonnull NSData *)data publicCert:(nonnull NSData *)publicCert signature:(nonnull NSData *)signature;
++ (BOOL)verifyData:(nonnull NSData *)data publicCert:(nonnull NSData *)publicCert signature:(nonnull NSData *)signature selfSigned:(BOOL)selfSigned ignoreExpired:(BOOL)ignoreExpired;
 
 + (nullable NSData *)base64Decode:(nonnull NSString *)base64String;
 
