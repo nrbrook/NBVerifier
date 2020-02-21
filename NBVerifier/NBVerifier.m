@@ -26,15 +26,22 @@
     OSStatus trustResult = SecTrustCreateWithCertificates(publicCertificate, policy, &trustRef);
     NSAssert1(trustResult == errSecSuccess, @"Bad trust result: %d", (int)trustResult);
     
+    if(selfSigned) {
+        // self signed certificate, trust root
+        NSArray *anchors = @[ (__bridge id) publicCertificate ];
+        SecTrustSetAnchorCertificates(trustRef, (__bridge CFTypeRef)anchors);
+    }
+    
     if (@available(macOS 10.14, iOS 12.0, *)) {
-        if(selfSigned) {
-            // self signed certificate, trust root
-            NSArray *anchors = @[ (__bridge id) publicCertificate ];
-            SecTrustSetAnchorCertificates(trustRef, (__bridge CFTypeRef)anchors);
-        }
         CFErrorRef errRef;
         bool res = SecTrustEvaluateWithError(trustRef, &errRef);
-        NSAssert1(res || (ignoreExpired && CFErrorGetCode(errRef) == errSecCertificateExpired), @"Bad trust eval result: %@", errRef);
+        if(!res && ignoreExpired && CFErrorGetCode(errRef) == errSecCertificateExpired) {
+            // ignore all current exceptions
+            CFDataRef cookies = SecTrustCopyExceptions(trustRef);
+            SecTrustSetExceptions(trustRef, cookies);
+            res = SecTrustEvaluateWithError(trustRef, &errRef);
+        }
+        NSAssert1(res, @"Bad trust eval result: %@", errRef);
     } else {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
