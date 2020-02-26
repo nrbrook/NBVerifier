@@ -40,6 +40,7 @@
             CFDataRef cookies = SecTrustCopyExceptions(trustRef);
             SecTrustSetExceptions(trustRef, cookies);
             res = SecTrustEvaluateWithError(trustRef, &errRef);
+            CFRelease(cookies);
         }
         NSAssert1(res, @"Bad trust eval result: %@", errRef);
     } else {
